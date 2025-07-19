@@ -1,4 +1,4 @@
-package com.menene.noteit.ui.theme
+package com.menene.noteit.presentation.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val primaryLight = Color(0xFF4C662B)

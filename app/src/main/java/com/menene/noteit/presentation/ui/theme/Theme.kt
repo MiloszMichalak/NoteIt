@@ -1,4 +1,4 @@
-package com.menene.noteit.ui.theme
+package com.menene.noteit.presentation.ui.theme
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -119,6 +119,7 @@ fun NoteItTheme(
   MaterialTheme(
     colorScheme = colorScheme,
     typography = AppTypography,
+      shapes = AppShapes,
     content = content
   )
 }

@@ -25,7 +25,12 @@ fun NavigationRoot() {
             when (key) {
                 LandingScreen -> {
                     NavEntry(key = key) {
-                        LandingScreenUi()
+                        LandingScreenUi(
+                            onStartClick = {
+                                backstack.clear()
+                                backstack.add(HomeScreen)
+                            }
+                        )
                     }
                 }
 
