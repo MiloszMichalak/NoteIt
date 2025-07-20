@@ -1,6 +1,7 @@
 package com.menene.noteit.di
 
 import android.app.Application
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
@@ -9,7 +10,8 @@ class NoteItApplication: Application() {
         super.onCreate()
 
         startKoin {
-           module { mainModule }
+            androidContext(this@NoteItApplication)
+            modules(mainModule)
         }
     }
 }

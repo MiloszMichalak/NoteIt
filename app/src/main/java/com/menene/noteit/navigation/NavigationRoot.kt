@@ -1,6 +1,7 @@
 package com.menene.noteit.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.rememberNavBackStack
@@ -11,8 +12,10 @@ import com.menene.noteit.presentation.HomeScreenUi
 import com.menene.noteit.presentation.LandingScreenUi
 
 @Composable
-fun NavigationRoot() {
-    val backstack = rememberNavBackStack(LandingScreen)
+fun NavigationRoot(
+    hasSeenLanding: Boolean? = null,
+) {
+    val backstack = rememberNavBackStack(if (hasSeenLanding!!) HomeScreen else LandingScreen)
 
     NavDisplay(
         backStack = backstack,
