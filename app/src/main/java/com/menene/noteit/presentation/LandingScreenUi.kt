@@ -19,16 +19,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.menene.noteit.util.DataStoreManager
 import kotlinx.coroutines.launch
-import org.koin.compose.koinInject
 
 @Composable
 fun LandingScreenUi(
-    dataStoreManager: DataStoreManager = koinInject(),
     onStartClick: () -> Unit
 ) {
     Column(
@@ -51,9 +46,6 @@ fun LandingScreenUi(
                     Text("Wlasnie tutaj to bedziesz miec!")
                     Button(
                         onClick = {
-                            coroutineScope.launch {
-                                dataStoreManager.setHasSeenLandingScreen(true)
-                            }
                             onStartClick()
                         }
                     ) {

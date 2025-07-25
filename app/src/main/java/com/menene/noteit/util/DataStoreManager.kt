@@ -17,15 +17,15 @@ class DataStoreManager(
         private val HASSEEN = booleanPreferencesKey("hasSeenLandingScreen")
     }
 
-    val hasSeen: Flow<Boolean?> =
+    val hasSeen: Flow<Boolean> =
         context.dataStore.data.map { preferences ->
-            preferences[HASSEEN]
+            preferences[HASSEEN] ?: false
         }
+
 
     suspend fun setHasSeenLandingScreen(hasSeen: Boolean) {
         context.dataStore.edit { preferences ->
             preferences[HASSEEN] = hasSeen
         }
     }
-
 }

@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.lifecycle.viewmodel.navigation3)
+
     implementation(libs.kotlinx.serialization.core)
 
     implementation(libs.room.runtime)
@@ -66,11 +67,10 @@ dependencies {
 
     implementation(libs.datastore)
 
+    implementation(libs.koin.core)
     implementation(libs.koin.compose)
     implementation(libs.koin.compose.viewmodel)
     implementation(libs.koin.compose.viewmodel.navigation)
-
-    implementation(libs.splashscreen)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
