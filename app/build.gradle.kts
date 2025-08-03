@@ -71,6 +71,8 @@ dependencies {
     implementation(libs.koin.compose)
     implementation(libs.koin.compose.viewmodel)
     implementation(libs.koin.compose.viewmodel.navigation)
+    implementation(libs.koin.annotations)
+    ksp(libs.ksp.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

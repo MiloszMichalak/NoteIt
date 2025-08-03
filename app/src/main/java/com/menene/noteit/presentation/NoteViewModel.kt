@@ -12,7 +12,6 @@ class NoteViewModel(
     private val noteDao: NoteDao
 ): ViewModel() {
     private val _allNotes = MutableStateFlow(emptyList<Note>())
-//        .onStart { noteDao.getAllNotes() }
 
     init {
         viewModelScope.launch {
