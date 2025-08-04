@@ -21,7 +21,7 @@ fun HomeScreenUi(
         modifier = Modifier
             .fillMaxSize()
     ) {
-        val notes by noteViewModel.allNotes.collectAsStateWithLifecycle(emptyList())
+        val notes by noteViewModel.allNotes.collectAsStateWithLifecycle()
 
         LazyColumn(
             modifier = Modifier.wrapContentSize()

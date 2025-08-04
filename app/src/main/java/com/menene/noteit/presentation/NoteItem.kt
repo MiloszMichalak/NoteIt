@@ -5,15 +5,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.menene.noteit.data.Note
 
 @Composable
-fun NoteItem(note: Note) {
+fun NoteItem(note: NoteUI) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
         Text(note.title)
         Text(note.description)
-        Text(note.timestamp.toString())
+        Text(note.date)
     }
 }

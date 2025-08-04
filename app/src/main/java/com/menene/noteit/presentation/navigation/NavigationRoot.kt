@@ -1,9 +1,14 @@
 package com.menene.noteit.presentation.navigation
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.rememberNavBackStack
@@ -23,11 +28,23 @@ fun NavigationRoot(
     dataStoreManager: DataStoreManager = koinInject(),
     noteViewModel: NoteViewModel = koinInject()
 ) {
-    val hasSeen by dataStoreManager.hasSeen.collectAsState(true)
+    val hasSeen by dataStoreManager.hasSeen.collectAsStateWithLifecycle(null)
     val scope = rememberCoroutineScope()
 
+    if (hasSeen == null) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            CircularProgressIndicator()
+        }
+        return
+    }
+
+
     val backstack = rememberNavBackStack(
-        if (hasSeen) HomeScreen else LandingScreen
+        if (hasSeen == true) HomeScreen else LandingScreen
     )
 
     NavDisplay(
