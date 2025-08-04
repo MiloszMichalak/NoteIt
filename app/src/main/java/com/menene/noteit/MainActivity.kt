@@ -4,11 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.ui.Modifier
 import com.menene.noteit.presentation.navigation.NavigationRoot
 import com.menene.noteit.presentation.ui.theme.NoteItTheme
 
@@ -19,15 +14,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             NoteItTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(innerPadding)
-                    ) {
-                        NavigationRoot()
-                    }
-                }
+                NavigationRoot()
             }
         }
     }
