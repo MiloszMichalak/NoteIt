@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="noteit_icon">"Ikona NoteIt"</string>
+    <string name="all_in_one_place">"Chcesz mieć wszystko w jednym miejscu?"</string>
+    <string name="you_will_have_it">Właśnie tutaj to będziesz mieć!</string>
+    <string name="start_now">Zacznij teraz!</string>
+    <string name="add_note">Dodaj notatkę</string>
+    <string name="your_notes">Twoje notatki</string>
+</resources>

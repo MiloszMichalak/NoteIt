@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">NoteIt</string>
+    <string name="app_name" translatable="false">NoteIt</string>
+    <string name="noteit_icon">"NoteIt Icon"</string>
+    <string name="all_in_one_place">"Would you like to have everything in one place?"</string>
+    <string name="you_will_have_it">This is where you\'ll get it</string>
+    <string name="start_now">Start now!</string>
+    <string name="add_note">Add note</string>
+    <string name="your_notes">Your notes</string>
 </resources>

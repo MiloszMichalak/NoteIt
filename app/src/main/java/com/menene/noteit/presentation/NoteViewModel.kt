@@ -16,9 +16,9 @@ class NoteViewModel(
     val allNotes = noteDao.getAllNotes()
         .map { notes -> notes.map { note -> note.toNoteUI() } }
         .stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000),
-        initialValue = emptyList()
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = emptyList()
     )
 
     fun insertNote(note: Note) {

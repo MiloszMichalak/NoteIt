@@ -1,76 +1,101 @@
 package com.menene.noteit.presentation
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.EditNote
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.launch
+import com.menene.noteit.R
+import com.menene.noteit.presentation.components.PagerDots
 
 @Composable
 fun LandingScreenUi(
     onStartClick: () -> Unit
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
+    Scaffold { innerPadding ->
         val pagerState = rememberPagerState(
             pageCount = { 2 },
         )
         val coroutineScope = rememberCoroutineScope()
 
-        HorizontalPager(
-            state = pagerState,
-        ) { page ->
-            when (page) {
-                0 -> {
-                    Text("Chcialbys miec wszystkie notatki w jednym miejscu?")
-                }
-                1 -> {
-                    Text("Wlasnie tutaj to bedziesz miec!")
-                    Button(
-                        onClick = {
-                            onStartClick()
+        Column(
+            modifier = Modifier
+                .padding(paddingValues = innerPadding)
+                .padding(horizontal = 32.dp)
+                .fillMaxSize(),
+        ) {
+            HorizontalPager(
+                state = pagerState,
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxSize()
+            ) { page ->
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
+                ) {
+                    when (page) {
+                        0 -> {
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.spacedBy(32.dp)
+                            ) {
+                                Icon(
+                                    modifier = Modifier
+                                        .size(96.dp),
+                                    imageVector = Icons.Outlined.EditNote,
+                                    contentDescription = stringResource(R.string.noteit_icon),
+                                )
+                                Text(
+                                    text = stringResource(R.string.all_in_one_place),
+                                    style = MaterialTheme.typography.bodyMedium
+                                )
+                            }
                         }
-                    ) {
-                        Text("Zacznij teraz!")
+
+                        1 -> {
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.spacedBy(32.dp)
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.you_will_have_it),
+                                    style = MaterialTheme.typography.bodyMedium
+                                )
+                                Button(
+                                    onClick = {
+                                        onStartClick()
+                                    }
+                                ) {
+                                    Text(
+                                        text = stringResource(R.string.start_now)
+                                    )
+                                }
+                            }
+                        }
                     }
                 }
             }
-        }
-        Row(
-            horizontalArrangement = Arrangement.Center
-        ) {
-            repeat(pagerState.pageCount){ index ->
-                val color = if (index == pagerState.currentPage) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline
-                Box(
-                    modifier = Modifier
-                        .padding(2.dp)
-                        .clip(CircleShape)
-                        .background(color)
-                        .size(16.dp)
-                        .clickable(onClick = {
-                            coroutineScope.launch {
-                                pagerState.animateScrollToPage(index)
-                            }
-                        })
-                ) {  }
+            Column {
+                PagerDots(
+                    pagerState = pagerState,
+                    coroutineScope = coroutineScope
+                )
             }
         }
     }
