@@ -1,6 +1,7 @@
 package com.menene.noteit.presentation
 
 import android.content.res.Configuration
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,9 +33,9 @@ fun HomeScreenUi(
 ) {
     val notes by noteViewModel.allNotes.collectAsStateWithLifecycle()
     val cellConfiguration = if (LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-        StaggeredGridCells.Adaptive(minSize = 150.dp)
+        StaggeredGridCells.Adaptive(minSize = 160.dp)
     } else {
-        StaggeredGridCells.Fixed(count = 3)
+        StaggeredGridCells.Fixed(count = 2)
     }
 
     Scaffold(
@@ -61,8 +62,9 @@ fun HomeScreenUi(
             )
             LazyVerticalStaggeredGrid(
                 columns = cellConfiguration,
-                contentPadding = PaddingValues(8.dp),
-                verticalItemSpacing = 8.dp,
+                contentPadding = PaddingValues(16.dp),
+                verticalItemSpacing = 16.dp,
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 items(notes) { note ->
                     NoteItem(note)

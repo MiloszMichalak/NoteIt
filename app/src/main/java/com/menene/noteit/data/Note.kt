@@ -26,8 +26,8 @@ fun Note.toNoteUI(): NoteUI {
 }
 
 fun Long.toUiDate(): String {
-    val date = Date(this * 1000) // Convert seconds to milliseconds
-    val formatter = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+    val date = Date(this * 1000)
+    val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
     return formatter.format(date)
 }
 

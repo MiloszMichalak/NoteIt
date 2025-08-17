@@ -16,9 +16,9 @@ fun NoteItem(note: NoteUI) {
     Column(
         modifier = Modifier
             .wrapContentSize()
+//            .padding(8.dp)
+            .border(1.dp, MaterialTheme.colorScheme.outline, MaterialTheme.shapes.medium)
             .padding(8.dp)
-            .border(1.dp, MaterialTheme.colorScheme.onSurfaceVariant, MaterialTheme.shapes.medium)
-            .padding(4.dp)
             .widthIn(min = 128.dp)
     ) {
         Text(
